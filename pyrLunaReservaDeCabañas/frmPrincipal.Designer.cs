@@ -43,7 +43,7 @@
             rdbTarjeta = new RadioButton();
             rdbEfectivo = new RadioButton();
             grpTitularDeLaReserva = new GroupBox();
-            txtTelefonos = new TextBox();
+            mskTelefonos = new MaskedTextBox();
             txtNombre = new TextBox();
             lblTelefono = new Label();
             lblNombre = new Label();
@@ -163,6 +163,7 @@
             // 
             // cmbTarjetas
             // 
+            cmbTarjetas.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTarjetas.Font = new Font("Segoe UI", 15.75F);
             cmbTarjetas.FormattingEnabled = true;
             cmbTarjetas.Location = new Point(112, 95);
@@ -204,7 +205,7 @@
             // 
             // grpTitularDeLaReserva
             // 
-            grpTitularDeLaReserva.Controls.Add(txtTelefonos);
+            grpTitularDeLaReserva.Controls.Add(mskTelefonos);
             grpTitularDeLaReserva.Controls.Add(txtNombre);
             grpTitularDeLaReserva.Controls.Add(lblTelefono);
             grpTitularDeLaReserva.Controls.Add(lblNombre);
@@ -216,13 +217,16 @@
             grpTitularDeLaReserva.TabStop = false;
             grpTitularDeLaReserva.Text = "Titular de la Reserva";
             // 
-            // txtTelefonos
+            // mskTelefonos
             // 
-            txtTelefonos.Location = new Point(104, 65);
-            txtTelefonos.Name = "txtTelefonos";
-            txtTelefonos.Size = new Size(477, 33);
-            txtTelefonos.TabIndex = 1;
-            txtTelefonos.TextChanged += txtTelefonos_TextChanged;
+            mskTelefonos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mskTelefonos.Location = new Point(104, 65);
+            mskTelefonos.Mask = "(999)000-0000";
+            mskTelefonos.Name = "mskTelefonos";
+            mskTelefonos.PromptChar = ' ';
+            mskTelefonos.Size = new Size(477, 33);
+            mskTelefonos.TabIndex = 1;
+            mskTelefonos.MaskInputRejected += mskTelefonos_MaskInputRejected_1;
             // 
             // txtNombre
             // 
@@ -301,10 +305,10 @@
         private Label lblTarjetas;
         private RadioButton rdbTarjeta;
         private RadioButton rdbEfectivo;
-        private TextBox txtTelefonos;
         private TextBox txtNombre;
         private Label lblTelefono;
         private Label lblNombre;
         private Button btnAceptar;
+        private MaskedTextBox mskTelefonos;
     }
 }

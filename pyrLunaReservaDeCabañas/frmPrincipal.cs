@@ -24,7 +24,7 @@ namespace pyrLunaReservaDeCabañas
             bool diasValidos = int.TryParse(mskDias.Text, out dias) && dias > 0;
 
             bool nombreValido = !string.IsNullOrWhiteSpace(txtNombre.Text);
-            bool telValido = !string.IsNullOrWhiteSpace(txtTelefonos.Text);
+            bool telValido = !string.IsNullOrWhiteSpace(mskTelefonos.Text);
 
             btnAceptar.Enabled = diasValidos && nombreValido && telValido;
         }
@@ -59,7 +59,7 @@ namespace pyrLunaReservaDeCabañas
 
                 // Datos del titular
                 txtNombre.Text = "";
-                txtTelefonos.Text = "";
+                mskTelefonos.Text = "";
 
                 // Botón aceptar deshabilitado
                 btnAceptar.Enabled = false;
@@ -96,7 +96,7 @@ namespace pyrLunaReservaDeCabañas
             ValidarAceptar();
         }
 
-        private void txtTelefonos_TextChanged(object sender, EventArgs e)
+        private void mskTelefonos_MaskInputRejected_1(object sender, MaskInputRejectedEventArgs e)
         {
             ValidarAceptar();
         }
